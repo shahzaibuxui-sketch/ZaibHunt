@@ -1,9 +1,14 @@
 import os
 from datetime import timedelta
+from pathlib import Path
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+# Using an explicit path (rather than relying on the current working
+# directory) ensures this works correctly both locally and when deployed
+# under a WSGI server like PythonAnywhere, where the working directory
+# isn't guaranteed to be this file's folder.
+load_dotenv(dotenv_path=Path(__file__).resolve().parent / '.env')
 
 class Config:
     """Base configuration class."""
