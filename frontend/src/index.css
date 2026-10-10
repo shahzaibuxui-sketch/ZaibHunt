@@ -13,6 +13,7 @@ body {
 
 .app {
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .main-content {
@@ -96,12 +97,25 @@ body {
   color: #6b7280;
 }
 
+/* Hamburger button — hidden on desktop */
+.header-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  color: #111;
+  cursor: pointer;
+  padding: 8px;
+}
+
 /* ===== AUTH STYLES ===== */
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 64px);
+  min-height: calc(100dvh - 64px);
   padding: 20px;
 }
 
@@ -1006,4 +1020,177 @@ body {
   white-space: pre-wrap;
   word-wrap: break-word;
   color: #374151;
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 16px;
+  }
+
+  .header-logo-img {
+    height: 40px;
+  }
+
+  .header-logo-text {
+    font-size: 18px;
+  }
+
+  /* Hide the desktop nav row, show hamburger */
+  .header-nav {
+    display: none;
+  }
+
+  .header-hamburger {
+    display: block;
+  }
+
+  /* Slide-down mobile menu */
+  .header-nav.open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 8px 16px 16px;
+    gap: 4px;
+  }
+
+  .header-nav.open .header-nav-link {
+    padding: 12px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-nav.open .header-user-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin-left: 0;
+    padding-left: 0;
+    padding-top: 8px;
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .header-nav.open .header-user-section .btn {
+    min-height: 44px;
+  }
+
+  /* Stack flex rows */
+  .resume-info-row,
+  .jobs-header-top,
+  .job-card-header,
+  .job-card-footer,
+  .matches-header-top,
+  .match-card-header,
+  .cover-letter-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .job-card-footer,
+  .cover-letter-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Touch targets */
+  .btn,
+  .form-input,
+  .header-nav-link,
+  .file-upload-label {
+    min-height: 44px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Reduce page padding */
+  .dashboard-container,
+  .resume-container,
+  .jobs-container,
+  .matches-container {
+    padding: 16px;
+  }
+
+  .welcome-card,
+  .resume-upload-section,
+  .resume-details,
+  .job-card,
+  .match-card {
+    padding: 16px;
+  }
+
+  .auth-card {
+    padding: 24px;
+  }
+
+  .match-score {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 16px;
+  }
+
+  .dashboard-container,
+  .resume-container,
+  .jobs-container,
+  .matches-container {
+    padding: 16px;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .jobs-title,
+  .matches-title,
+  .resume-title {
+    font-size: 22px;
+  }
+
+  .job-title,
+  .match-job-title {
+    font-size: 16px;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pagination .btn {
+    flex: 1;
+  }
+
+  .auth-card {
+    padding: 20px;
+  }
+
+  /* Prevent horizontal scroll at 320px */
+  body {
+    overflow-x: hidden;
+  }
+
+  .job-description,
+  .explanation-text,
+  .cover-letter-text,
+  .preview-text {
+    word-break: break-word;
+  }
 }
